@@ -9,14 +9,8 @@ var usersModel = require('../models/users');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  
-  res.redirect('/dashboard');
+  res.redirect('/signin');
 });
-
-router.get('/signin', async function(req, res, next) {
-    res.render('signin');
-});
-
 
 //post
 router.post('/signin', async function(req, res, next) {
@@ -43,6 +37,7 @@ router.post('/signup', async function(req, res, next) {
       password: password,
     })
     await newUser.save();
+    req.session.isLogged = true;
   }
   res.redirect('/')
 });
