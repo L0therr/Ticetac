@@ -1,7 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: yellow;
+  background-color: #1e5799;
 }
 
 a {
@@ -11,4 +11,8 @@ a {
 
 .list-group-item {
   display: flex;
+}
+
+.navbar {
+  background-color: rgba(255, 255, 255, 0.842);
 }
