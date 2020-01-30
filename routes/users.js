@@ -9,12 +9,30 @@ var usersModel = require('../models/users');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.redirect('/signin');
+  console.log('**/user**')
+  res.redirect('/home');
 });
 
 //post
 router.post('/signin', async function(req, res, next) {
-  res.redirect('/')
+  var toTestMail = req.body.inmail.toLowerCase();
+  var toTestPswd = req.body.inpswd;
+
+  var testResult = await usersModel.findOne({
+    email: toTestMail,
+    password: toTestPswd
+  })
+
+  if(testResult) {
+    req.session.currentUser = testResult;
+    req.session.isLogged = true;
+    console.log('====== logged');
+    res.redirect('/');
+  } else {
+    req.session.isLogged = false;
+    console.log('====== NOT LOGGED');
+    res.redirect('/signin');
+  }
 });
 
 router.post('/signup', async function(req, res, next) {
