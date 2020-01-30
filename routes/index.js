@@ -39,7 +39,7 @@ router.get('/error', async function(req, res, next) {
   res.render('error', { session: req.session });
 });
 
-router.post('/searchTrip', async function(req, res, next) {
+router.post('/search', async function(req, res, next) {
   
   var cityFormat = (toFormat) => {
     toFormat = toFormat.toLowerCase();
@@ -61,7 +61,7 @@ router.post('/searchTrip', async function(req, res, next) {
 
   //redirect
   if(searchTrip.length > 0) {
-
+    console.log(searchTrip)
     res.render('results', {search: searchTrip});
   } else {
     req.session.errorSearch = {

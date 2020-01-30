@@ -4,20 +4,21 @@
    <!-- GRID -->
    <div class="container">
       <div class="row">
-          <div class="col-12 offset-lg-6 col-lg-6">
+          <div class="col-12 offset-lg-12 col-lg-12">
             <!--liste les résultats section-->
             
-            <ul class="list-group">
+            <ul class="list-group resultsUl">
 
-              <% for(var i=0;i<search.length;i++){%>
+              <% console.log(search.length);
+                for(var i=0;i<search.length;i++){%>
 
-              <li class="list-group-item">
+              <li class="list-group-item resultDiv">
                 <span><%= search[i].departure %></span>
                 <i class="fas fa-long-arrow-alt-right"></i>
                 <span><%= search[i].arrival %></span>
                 <span>Train departure at: <%= search[i].departureTime %></span>
                 <span><%= search[i].price %>€</span>
-                <a class="stretched-link" href="/orders?id=<%= search[i]._id %>">Go</button>
+                <button class="btn btn-danger"><a class="btnTxt" href="/orders?id=<%= search[i]._id%>">Go</a></button>
               </li>
               <%}%>
 
