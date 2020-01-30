@@ -10,7 +10,7 @@ mongoose.connect("mongodb+srv://admin:@lphabetaTango9@cluster0-k0fxq.gcp.mongodb
     if (error) {
    console.log("ATTENTION ERREUR:", error);
   } else {
-      console.log("====== BDD CONNECTED")
+      console.log("====== BDD CONNECTED");
   }
 });
 
