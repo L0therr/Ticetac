@@ -75,12 +75,16 @@ router.post('/searchTrip', async function(req, res, next) {
 
 //ORDERS
 router.get('/orders', async function(req, res, next) {
-  console.log(req.query);
-  res.render('orders');
-});
+  var tripId = req.query.id;
 
-router.get("/produit", function(req, res) {
-  console.log( req.query );
+  var trip = await tripsModel.findOne({
+    _id: tripId,
+  });
+  
+  req.session.currentOrder = [];
+  req.session.currentOrder.push(trip)
+
+  res.render('orders', {});
 });
 
 
