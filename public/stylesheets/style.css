@@ -17,7 +17,6 @@ a {
   background-color: rgba(255, 255, 255, 0.842);
 }
 
-<<<<<<< HEAD
 .lasttrips {
   margin-right: 15px;
   color: black;
@@ -27,7 +26,6 @@ a {
   margin-right: 15px;
   color: red;
 }
-=======
 .resultDiv {
   display: flex;
   flex-direction: row;
@@ -42,4 +40,3 @@ a {
   color: white;
   text-decoration: none;
 }
->>>>>>> cc333c73e5866ea317225fccd42de0744d112ed9
