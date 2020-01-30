@@ -50,20 +50,27 @@
                     </thead>
                     
                     <tbody>
+
+                      <% var total = 0;
+                        for(var i=0;i<orders.length;i++){ %>
                       <tr>
-                        <td>1</td>
-                        <td>Paris Lille</td>
-                        <td>22 aout</td>
-                        <td>11h00</td>
-                        <td>100€</td>  
+                        <td><%= i + 1 %></td>
+                        <td><%= orders[i].departure %> <i class="fas fa-long-arrow-alt-right"></i> <%= orders[i].arrival %></td>
+                        <td><%= orders[i].date %></td>
+                        <td><%= orders[i].departureTime %></td>
+                        <td><%= orders[i].price %>€</td>  
                       </tr>
+
+                      <%total =+ orders[i].price %> <%} %>
+                      
                       <tr>
-                        <td>2</td>
-                        <td>Paris Bordeaux</td>
-                        <td>28 aout</td>
-                        <td>16h00</td>
-                        <td>150€</td>  
+                        <td colspan="4">Total:</td>
+                        <td><%= total %>€</td>
                       </tr>
+
+
+
+
                     </tbody>
                   </table>
 

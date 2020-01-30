@@ -84,7 +84,7 @@ router.get('/orders', async function(req, res, next) {
   req.session.currentOrder = [];
   req.session.currentOrder.push(trip)
 
-  res.render('orders', {});
+  res.render('orders', {orders: req.session.currentOrder});
 });
 
 

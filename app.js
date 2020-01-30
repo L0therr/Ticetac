@@ -49,4 +49,17 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
+
+//
+
+app.locals.dataForm = (date) => {
+  var month = getMonth(date);
+  var day = getDate(date);
+  var year = getFullYear(date);
+
+  return day + '/' + month + '/' + year;
+}
+
+
 module.exports = app;
