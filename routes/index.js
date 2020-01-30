@@ -79,6 +79,10 @@ router.get('/orders', async function(req, res, next) {
   res.render('orders');
 });
 
+router.get("/produit", function(req, res) {
+  console.log( req.query );
+});
+
 
 
 
