@@ -13,6 +13,7 @@ var usersSchema = mongoose.Schema({
     lastName: String,
     firstName: String,
     password: String,
+    orders: [tripsSchema],
 });
 
 const usersModel = mongoose.model('users', usersSchema);

@@ -20,7 +20,6 @@ router.get('/', async function(req, res, next) {
 });
 
 router.get('/home', async function(req, res, next) {
-  req.session.isLogged = true;
   if(!req.session.isLogged) {
     res.redirect('/signin');
   } else {
@@ -34,10 +33,6 @@ router.get('/signin', async function(req, res, next) {
   } else {
     res.redirect('/home');
   }
-});
-
-router.get('/results', async function(req, res, next) {
-  res.render('results', { session: req.session });
 });
 
 router.get('/error', async function(req, res, next) {
@@ -66,11 +61,8 @@ router.post('/searchTrip', async function(req, res, next) {
 
   //redirect
   if(searchTrip.length > 0) {
-  
-    // var id = req.session.currentUser._id;
-    req.session.currentUser.currentSearch = searchTrip;
-    
-    res.redirect('/results');
+
+    res.render('results', {search: searchTrip});
   } else {
     req.session.errorSearch = {
       departure: fromCity,
@@ -79,6 +71,12 @@ router.post('/searchTrip', async function(req, res, next) {
     };
     res.redirect('/error');
   }
+});
+
+//ORDERS
+router.get('/orders', async function(req, res, next) {
+  console.log(req.query);
+  res.render('orders');
 });
 
 

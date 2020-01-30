@@ -24,8 +24,6 @@ router.post('/signin', async function(req, res, next) {
     password: toTestPswd
   })
 
-  console.log(testResult)
-
   if(testResult) {
     req.session.currentUser = testResult;
     req.session.isLogged = true;

@@ -9,3 +9,6 @@ a {
 }
 
 
+.list-group-item {
+  display: flex;
+}

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
    crossorigin=""/>
+   <script src="https://kit.fontawesome.com/7f93ca795e.js" crossorigin="anonymous"></script>
    <link rel="stylesheet" href="/stylesheets/style.css">
     <title>WeatherApp</title>
 </head>
@@ -29,15 +30,23 @@
           <div class="col-12 offset-lg-6 col-lg-6">
             <!--liste les résultats section-->
             
-            <div>Tickets avalaible on : <span>!DATE!</span></div>
-            <div>ici, j'insère mon foutu tableau dynamique</div>
+            <ul class="list-group">
 
+              <% for(var i=0;i<search.length;i++){%>
 
+              <li class="list-group-item">
+                <span><%= search[i].departure %></span>
+                <i class="fas fa-long-arrow-alt-right"></i>
+                <span><%= search[i].arrival %></span>
+                <span>Train departure at: <%= search[i].departureTime %></span>
+                <span><%= search[i].price %>€</span>
+                <button href="/orders?id=<%= search[i]._id%>">Go</button>
+              </li>
+              <%}%>
 
-
+            </ul>
           </div>
         </div>
-
       </div>
    </div>
    
