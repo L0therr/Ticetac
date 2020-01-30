@@ -1,5 +1,6 @@
 body {
-  padding: 50px;
+  padding: 0px;
+  margin: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #1e5799;
 }
@@ -8,11 +9,20 @@ a {
   color: #00B7FF;
 }
 
-
 .list-group-item {
   display: flex;
 }
 
 .navbar {
   background-color: rgba(255, 255, 255, 0.842);
+}
+
+.lasttrips {
+  margin-right: 15px;
+  color: black;
+}
+
+.login {
+  margin-right: 15px;
+  color: red;
 }
