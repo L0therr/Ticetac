@@ -6,6 +6,7 @@ var session = require('express-session')
 //models
 var connect = require('../models/connect');
 var usersModel = require('../models/users');
+var tripsModel = require('../models/trips');
 
 
 
@@ -19,6 +20,7 @@ router.get('/', async function(req, res, next) {
 });
 
 router.get('/home', async function(req, res, next) {
+  req.session.isLogged = true;
   if(!req.session.isLogged) {
     res.redirect('/signin');
   } else {
@@ -33,6 +35,57 @@ router.get('/signin', async function(req, res, next) {
     res.redirect('/home');
   }
 });
+
+router.get('/results', async function(req, res, next) {
+  res.render('results', { session: req.session });
+});
+
+router.get('/error', async function(req, res, next) {
+  res.render('error', { session: req.session });
+});
+
+router.post('/searchTrip', async function(req, res, next) {
+  
+  var cityFormat = (toFormat) => {
+    toFormat = toFormat.toLowerCase();
+    toFormat = toFormat.charAt(0).toUpperCase() + toFormat.slice(1);
+    return toFormat;
+  }
+
+  //get search with the first letter capitalized
+  var fromCity  = cityFormat(req.body.from);
+  var toCity = cityFormat(req.body.to);
+  var date = req.body.on;
+
+  //search our DB
+  var searchTrip = await tripsModel.find({
+    departure: fromCity,
+    arrival: toCity,
+    date: date,
+  });
+
+  //redirect
+  if(searchTrip.length > 0) {
+  
+    // var id = req.session.currentUser._id;
+    req.session.currentUser.currentSearch = searchTrip;
+    
+    res.redirect('/results');
+  } else {
+    req.session.errorSearch = {
+      departure: fromCity,
+      arrival: toCity,
+      date: date,
+    };
+    res.redirect('/error');
+  }
+});
+
+
+
+
+
+
 
 
 

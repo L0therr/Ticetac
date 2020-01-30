@@ -6,6 +6,7 @@ var session = require('express-session')
 //models
 var connect = require('../models/connect');
 var usersModel = require('../models/users');
+var tripsModel = require('../models/trips');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -22,6 +23,8 @@ router.post('/signin', async function(req, res, next) {
     email: toTestMail,
     password: toTestPswd
   })
+
+  console.log(testResult)
 
   if(testResult) {
     req.session.currentUser = testResult;

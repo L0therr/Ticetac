@@ -28,13 +28,13 @@
       <div class="row">
           <div class="col-12 offset-lg-6 col-lg-6">
             <!--New City section-->
-            <form action="/add-city" method="POST">
+            <form action="/searchTrip" method="POST">
               <div class="input-group mb-3">
-                <input name="newcity" type="text" class="form-control" placeholder="From" aria-label="new city name">
-                <input name="newcity" type="text" class="form-control" placeholder="To" aria-label="new city name">
-                <input name="newcity" type="date" class="form-control" placeholder="To" aria-label="new city name">
+                <input name="from" type="text" class="form-control" placeholder="From" aria-label="new city name" required>
+                <input name="to" type="text" class="form-control" placeholder="To" aria-label="new city name" required>
+                <input name="on" type="date" class="form-control" placeholder="To" aria-label="new city name" required>
                 <div class="input-group-append">
-                  <button class="btn btn-warning" type="submit" id="button-addon2">Add</button>
+                  <button class="btn btn-warning" type="submit" id="button-addon2">Go</button>
                 </div>
               </div>
             </form>
