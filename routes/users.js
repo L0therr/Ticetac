@@ -10,11 +10,10 @@ var tripsModel = require('../models/trips');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  console.log(req.session);
   if(!req.session.isLogged) {
     res.redirect('/signin');
   } else {
-    res.render('dashboard');
+    res.render('dashboard', {user: req.session.currentUser});
   }
 });
 

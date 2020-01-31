@@ -3,7 +3,8 @@
 
    <!-- GRID -->
    <div class="container">
-      <div class="row">
+      <div class="row forTables">
+        <div class="mainTitle">Search Results:</div>
           <div class="col-12 offset-lg-12 col-lg-12">
             <!--liste les résultats section-->
             
@@ -14,9 +15,9 @@
                 <%console.log(search[i])%>
 
               <li class="list-group-item resultDiv">
-                <span><%= search[i].departure %></span>
+                <div><span><%= search[i].departure %></span>
                 <i class="fas fa-long-arrow-alt-right"></i>
-                <span><%= search[i].arrival %></span>
+                <span><%= search[i].arrival %></span></div>
                 <span>Train departure at: <%= search[i].departureTime %></span>
                 <span><%= search[i].price %>€</span>
                 <a class="btnTxt" href="/orders?id=<%= search[i]._id%>"><button class="btn btn-danger">Go</button></a>
