@@ -5,13 +5,19 @@
 
    <div class="container">
     <div class="row forTables">
-      <div class="mainTitle">My last trips :</div>
+      <div class="mainTitle">My Orders :</div>
         <div class="col-12 offset-lg-12 col-lg-12">
           
           <!-- Liste des réservations passées-->
           <div class="card-body">
             <div class="table-responsive">
-              <table id="order-info" class="table tableauArrondi">
+              
+
+
+              <% 
+              for(var i=0;i<orders.length;i++) {%>
+                
+                <table id="order-info" class="table tableauArrondi">
                 <thead>
                   <thead>
                     <tr class="table-danger tableTitle">
@@ -22,22 +28,50 @@
                     </tr>
                   </thead>
                 </thead>
-                
+
                 <tbody>
+
+                  <% var total = 0;
+                  for(var j=0;j<orders[i].length;j++){%>
+                  
                   <tr class="table-light">
-                    <th>25 août 2018</th>
-                    <th>Paris / Lille</th>
-                    <th>11:00 pm</th>
-                    <th>150€</th>
+                    <th><%= dateFormat(orders[i][j].date)%></th>
+                    <th><%= orders[i][j].departure %> <i class="fas fa-long-arrow-alt-right"></i> <%= orders[i][j].arrival %></th>
+                    <th><%= orders[i][j].departureTime %> pm</th>
+                    <th><%= orders[i][j].price %>€</th>
                   </tr>
+                  <% total += orders[i][j].price %>
+                  <%}%>
+
                   <tr class="table-light">
-                    <th>2 août 2018</th>
-                    <th>Bordeaux / Nantes</th>
-                    <th>15:00 pm</th>
-                    <th>150€</th>
+                    <th colspan="3">Total:</th>
+                    <th><%= total %>€</th>
                   </tr>
+
                 </tbody>
               </table>
+
+              <%}%>
+
+
+                
+
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
               <div class="btnnn"><a href="/home"><button class="btn btn-danger" type="submit">Home</button></a></div>
               

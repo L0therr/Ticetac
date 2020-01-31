@@ -4,6 +4,7 @@
    <!-- GRID -->
 
    <div class="container">
+<<<<<<< HEAD
     <div class="row forTables">
       <div class="mainTitle">My order :</div>
         <div class="col-12 offset-lg-12 col-lg-12">
@@ -85,6 +86,57 @@
                     </form>
 >>>>>>> ea635115ca85e3087ee3614c62aa03b8a7ae5fe4
 
+=======
+      <div class="row forTables">
+        <div class="mainTitle">My tickets</div>
+          <div class="col-12 offset-lg-12 col-lg-12">
+            <!--liste des billets réservés section-->
+            <div class="card-body">
+              <table id="order-info" class="table">
+                <thead>
+                  <thead>
+                    <tr>
+                      <th>N°</th>
+                      <th>Journey</th>
+                      <th>Date</th>
+                      <th>Departure time</th>
+                      <th>Price</th>  
+                    </tr>
+                  </thead>
+                </thead>
+                
+                <tbody>
+
+
+                  <% var total = 0;
+                  for(var i=0;i<orders.length;i++) { %>
+                  
+                  <form method="POST" action="/pay">
+                  <tr>
+                    <input type="hidden" name="ids" value="<%= orders[i]._id %>"> 
+                    <th><%= i + 1%></th>
+                    <th><%= orders[i].departure%> <i class="fas fa-long-arrow-alt-right"></i><%= orders[i]. arrival%></th>
+                    <th><%= orders[i].date%></th>
+                    <th><%= orders[i].departureTime%></th>
+                    <th><%= orders[i].price%>€</th>
+                  </tr>
+                  <% total += orders[i].price %>
+                  <%}%>
+
+                  <tr>
+                    <th colspan="4">Total:</th>
+                    <th><%= total %>€</th>
+                  </tr>
+
+                  <tr>
+                    <th colspan="5"><button type="submit">Commander</button></th>
+                  </tr>
+                </form>
+
+                </tbody>
+              </table>
+            </div>
+>>>>>>> cosmo
 
    
 <%- include('footer') %>
