@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
   if(!req.session.isLogged) {
     res.redirect('/signin');
   } else {
-    res.render('dashboard', {user: req.session.currentUser});
+    res.render('dashboard', {orders: req.session.currentOrder, user: req.session.currentUser, isLogged: req.session.isLogged});
   }
 });
 

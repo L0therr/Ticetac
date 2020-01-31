@@ -6,21 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,600&display=swap" rel="stylesheet">
     <title>Ticketac</title>
 </head>
 <body>
 
 
-    <!-- HEADER -->
+    <!-- HEADER --><%   console.log(isLogged)%>
     <nav class="header navbar">
         <a href="/home">
         <div class="headerDiv">
             <img src="../images/train.png">
-            <h3>Ticketac</h3>
+            <h3 class="siteName">Ticketac</h3>
         </div>
         </a>
         <div class="headerDiv">
-          <a class="login" href="/signin">Connexion</a>
-          <a class="lasttrips" href="/users/dashboard">Dashboard</a>
+            
+            <%if (!isLogged) {%>
+            <a class="login" href="/signin">Connexion</a>
+            <%} else {%>            
+            <a class="login" href="/users/">Dashboard</a>
+            <%}%>
+
+
         </div>
     </nav>

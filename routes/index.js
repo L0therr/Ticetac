@@ -23,20 +23,20 @@ router.get('/home', async function(req, res, next) {
   if(!req.session.isLogged) {
     res.redirect('/signin');
   } else {
-    res.render('home', {user: req.session.currentUser});
+    res.render('home', {user: req.session.currentUser, isLogged: req.session.isLogged});
   }
 });
 
 router.get('/signin', async function(req, res, next) {
   if(!req.session.isLogged) {
-    res.render('signin');
+    res.render('signin', { isLogged: req.session.isLogged});
   } else {
     res.redirect('/home');
   }
 });
 
 router.get('/error', async function(req, res, next) {
-  res.render('error', { session: req.session, user: req.session.currentUser });
+  res.render('error', { session: req.session, user: req.session.currentUser, isLogged: req.session.isLogged });
 });
 
 router.post('/search', async function(req, res, next) {
@@ -61,7 +61,7 @@ router.post('/search', async function(req, res, next) {
 
   //redirect
   if(searchTrip.length > 0) {
-    res.render('results', {search: searchTrip, user: req.session.currentUser});
+    res.render('results', {search: searchTrip, isLogged: req.session.isLogged, user: req.session.currentUser});
   } else {
     req.session.errorSearch = {
       departure: fromCity,
@@ -91,7 +91,7 @@ router.get('/orders', async function(req, res, next) {
 
 
 router.get('/checkout', async function(req, res, next) {
-  res.render('orders', {orders: req.session.currentOrder});
+  res.render('orders', {orders: req.session.currentOrder, user: req.session.currentUser, isLogged: req.session.isLogged});
 });
 
 router.post('/pay', async function(req, res, next) {
