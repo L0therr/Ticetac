@@ -54,4 +54,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.locals.cap = (name) => {
+  name = name.charAt(0).toUpperCase() + name.slice(1);
+  return name;
+}
+
 module.exports = app;

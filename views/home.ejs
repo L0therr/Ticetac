@@ -4,7 +4,7 @@
    <!-- GRID -->
    <div class="container">
       <div class="row forTables">
-        <div class="mainTitle">One-way ticket <%= user.lastName %> <%= user.firstName %> ?</div>
+        <div class="mainTitle">One-way ticket <%= cap(user.lastName) %> <%= cap(user.firstName) %> ?</div>
           <div class="col-12 col-lg-12">
             <!--trip section-->
             <form action="/search" method="POST">
