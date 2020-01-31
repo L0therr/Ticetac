@@ -100,10 +100,9 @@ router.post('/pay', async function(req, res, next) {
     _id: req.session.currentUser._id,
   });
 
-  var ids = req.body.id;
+  var ids = req.body.id.splice(1,1);
   var toSave = [];
 
-  console.log(req.body);
 
   for(var i=0;i<ids.length;i++){
     toSave.push({ fk_trip: ids[i]});
@@ -118,7 +117,6 @@ router.post('/pay', async function(req, res, next) {
   });
   
   req.session.currentUser = user;
-
   res.redirect('/home');
 });
 
