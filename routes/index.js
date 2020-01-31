@@ -91,7 +91,7 @@ router.get('/orders', async function(req, res, next) {
 
 
 router.get('/checkout', async function(req, res, next) {
-  res.render('orders', {orders: req.session.currentOrder, user: req.session.currentUser, isLogged: req.session.isLogged});
+  res.render('orders', {orders: req.session.currentOrder, user: req.session.currentUser});
 });
 
 router.post('/pay', async function(req, res, next) {
@@ -100,25 +100,16 @@ router.post('/pay', async function(req, res, next) {
     _id: req.session.currentUser._id,
   });
 
-  var ids = req.body.id;
+  var ids = req.body.ids;
   var toSave = [];
-  
-  for(var i=0;i<ids.length;i++) {
-  
+
+  for(var i=0;i<ids.length;i++){
     toSave.push({ fk_trip: ids[i]});
   }
 
-  if(!user.orders) {
-    user.orders = [];
-  }
-
-  user.orders.push({order: toSave}) 
+  user.orders.push({order: toSave});
 
   await user.save();
-
-  user = await usersModel.findOne({
-    _id: req.session.currentUser._id,
-  });
 
   res.redirect('/home');
 });

@@ -13,9 +13,13 @@ router.get('/', function(req, res, next) {
   if(!req.session.isLogged) {
     res.redirect('/signin');
   } else {
+
+    console.log(req.session);
+
     res.render('dashboard', {orders: req.session.currentOrder, user: req.session.currentUser, isLogged: req.session.isLogged});
   }
 });
+
 
 //post
 router.post('/signin', async function(req, res, next) {
@@ -25,12 +29,13 @@ router.post('/signin', async function(req, res, next) {
   var testResult = await usersModel.findOne({
     email: toTestMail,
     password: toTestPswd
-  })
+  });
 
   if(testResult) {
     req.session.currentUser = testResult;
     req.session.isLogged = true;
-    console.log('====== logged');
+    console.log('====== logged', req.session.isLogged);
+
     res.redirect('/');
   } else {
     req.session.isLogged = false;
@@ -51,7 +56,6 @@ router.post('/signup', async function(req, res, next) {
 
   //register the user
   if (!alreadyUseMail[0]) {
-    console.log(',dks')
     var newUser = new usersModel({
       email: mail,
       lastName: lastName,
@@ -59,7 +63,6 @@ router.post('/signup', async function(req, res, next) {
       password: password,
     })
     await newUser.save();
-    req.session.isLogged = true;
   }
   res.redirect('/')
 });
