@@ -23,7 +23,7 @@ router.get('/home', async function(req, res, next) {
   if(!req.session.isLogged) {
     res.redirect('/signin');
   } else {
-    res.render('home');
+    res.render('home', {user: req.session.currentUser});
   }
 });
 
@@ -36,7 +36,7 @@ router.get('/signin', async function(req, res, next) {
 });
 
 router.get('/error', async function(req, res, next) {
-  res.render('error', { session: req.session });
+  res.render('error', { session: req.session, user: req.session.currentUser });
 });
 
 router.post('/search', async function(req, res, next) {
@@ -61,7 +61,7 @@ router.post('/search', async function(req, res, next) {
 
   //redirect
   if(searchTrip.length > 0) {
-    res.render('results', {search: searchTrip});
+    res.render('results', {search: searchTrip, user: req.session.currentUser});
   } else {
     req.session.errorSearch = {
       departure: fromCity,

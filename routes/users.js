@@ -10,7 +10,6 @@ var tripsModel = require('../models/trips');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  console.log('**/user**')
   res.redirect('/home');
 });
 
@@ -60,23 +59,4 @@ router.post('/signup', async function(req, res, next) {
   }
   res.redirect('/')
 });
-
-
-
-//     //register the user
-//     if (alreadyUseMail === null) {
-//         var newUser = new signupModel({
-//             username: name,
-//             email: mail,
-//             password: pswd,
-//             cityId: [56, 78, ],
-//         })
-//         await newUser.save();
-//         logged = true;
-//         req.session.currentUser = newUser;
-//         req.session.isLogged = true;
-//     } else {
-//         req.session.error.signup = true;
-//     }
-
 module.exports = router;
