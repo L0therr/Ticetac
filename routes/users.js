@@ -10,7 +10,12 @@ var tripsModel = require('../models/trips');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.redirect('/home');
+  console.log(req.session);
+  if(!req.session.isLogged) {
+    res.redirect('/signin');
+  } else {
+    res.render('dashboard');
+  }
 });
 
 //post

@@ -6,12 +6,22 @@ body {
   color: white;
 }
 
+.row {
+  width: 100%;
+}
+
+ul, span {
+  color: black;
+}
+
 a {
   color: #00B7FF;
 }
 
 .list-group-item {
   display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .navbar {
@@ -45,9 +55,19 @@ a {
 
 .container {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+
   margin: 0 auto;
   width: 80%;
-  padding: 100px;
+  padding-top: 5em;
+  padding-bottom: 5em;
+  padding-left: 2em;
+  padding-right: 2em;
+
 }
 
 .input-group {
@@ -61,10 +81,14 @@ a {
 }
 
 .landmark{
-  height: 300px;
+  z-index: -1;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.landmark>img {
+  height: 40vh;
 }
 
 .error {
@@ -72,11 +96,4 @@ a {
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
