@@ -29,7 +29,7 @@ router.get('/home', async function(req, res, next) {
 
 router.get('/signin', async function(req, res, next) {
   if(!req.session.isLogged) {
-    res.render('signin', { isLogged: req.session.isLogged});
+    res.render('signin', {user:[], isLogged: req.session.isLogged});
   } else {
     res.redirect('/home');
   }
@@ -100,8 +100,13 @@ router.post('/pay', async function(req, res, next) {
     _id: req.session.currentUser._id,
   });
 
-  var ids = req.body.id.splice(1,1);
+
+  var tokill = req.body.id.shift();
+
+  var ids = req.body.id;
   var toSave = [];
+
+  
 
 
   for(var i=0;i<ids.length;i++){
@@ -117,6 +122,8 @@ router.post('/pay', async function(req, res, next) {
   });
   
   req.session.currentUser = user;
+
+  console.log(toSave)
   res.redirect('/home');
 });
 

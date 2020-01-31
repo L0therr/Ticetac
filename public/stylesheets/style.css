@@ -157,7 +157,7 @@ h4{
 
 .trainContainer {
   position: relative;
-  animation: moveTrain 7s ease-in-out infinite alternate;
+  animation: moveTrain 5s ease-in-out infinite alternate;
 }
 
 @keyframes moveTrain {

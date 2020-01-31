@@ -5,14 +5,13 @@
 
    <div class="container">
     <div class="row forTables">
+      <%if(orders.length != 0){%>
       <div class="mainTitle">My Orders :</div>
         <div class="col-12 offset-lg-12 col-lg-12">
           
           <!-- Liste des réservations passées-->
           <div class="card-body">
             <div class="table-responsive">
-              
-
 
               <% 
               for(var i=0;i<orders.length;i++) {%>
@@ -53,28 +52,15 @@
 
               <%}%>
 
+            <%}else {%>
 
-                
+            <div class="mainTitle">You have no orders yet...</div>
 
-               
-
-
-
+            
 
 
-
-
-
-
-
-
-
-
-
-
-
-              <div class="btnnn"><a href="/home"><button class="btn btn-danger" type="submit">Home</button></a></div>
-              
+            <div class="btnnn"><a href="/home"><button class="btn btn-danger" type="submit">Home</button></a></div> 
+            <%}%>
             </div>
           </div>
     </div>

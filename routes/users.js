@@ -21,8 +21,6 @@ router.get('/', async function(req, res, next) {
       userOrders.push(user.orders[i])
     }
 
-    console.log('***************');
-
     for(var i=0;i<userOrders.length;i++) {
       var one = [];
       for(var j=0;j<userOrders[i].order.length;j++) {
@@ -34,6 +32,8 @@ router.get('/', async function(req, res, next) {
       }
       toDisplay.push(one);
     }
+
+    console.log(toDisplay)
     res.render('dashboard', {orders: toDisplay, user: req.session.currentUser, isLogged: req.session.isLogged});
   }
 });
@@ -83,5 +83,15 @@ router.post('/signup', async function(req, res, next) {
     await newUser.save();
   }
   res.redirect('/')
+});
+
+
+
+
+
+router.get('/disconnect', async function(req, res, next){
+  req.session.currentUser = [];
+  req.session.isLogged = false;
+  res.redirect('/home');
 });
 module.exports = router;

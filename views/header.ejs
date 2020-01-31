@@ -31,10 +31,11 @@
             </div>
         </div>
 
-
-
-        <div class="headerDiv">           
+        <div class="headerDiv">
             <a class="login" href="/users/">Dashboard</a>
+            <% if(user){%>
+                <a class="login" href="/users/disconnect">disconnect</a>
+            <%}%>
         </div>
 
     </nav>
