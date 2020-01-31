@@ -50,16 +50,4 @@ app.use(function(err, req, res, next) {
 });
 
 
-
-//
-
-app.locals.dataForm = (date) => {
-  var month = getMonth(date);
-  var day = getDate(date);
-  var year = getFullYear(date);
-
-  return day + '/' + month + '/' + year;
-}
-
-
 module.exports = app;

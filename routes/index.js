@@ -94,4 +94,33 @@ router.get('/checkout', async function(req, res, next) {
   res.render('orders', {orders: req.session.currentOrder});
 });
 
+router.post('/pay', async function(req, res, next) {
+
+  var user = await usersModel.findOne({
+    _id: req.session.currentUser._id,
+  });
+
+  var ids = req.body.id;
+  var toSave = [];
+  
+  for(var i=0;i<ids.length;i++) {
+  
+    toSave.push({ fk_trip: ids[i]});
+  }
+
+  if(!user.orders) {
+    user.orders = [];
+  }
+
+  user.orders.push({order: toSave}) 
+
+  await user.save();
+
+  user = await usersModel.findOne({
+    _id: req.session.currentUser._id,
+  });
+
+  res.redirect('/home');
+});
+
 module.exports = router;
