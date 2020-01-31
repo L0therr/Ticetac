@@ -3,6 +3,7 @@ body {
   margin: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #1e5799;
+  color: white;
 }
 
 a {
@@ -15,6 +16,7 @@ a {
 
 .navbar {
   background-color: rgba(255, 255, 255, 0.842);
+  color: black
 }
 
 .lasttrips {
@@ -39,4 +41,29 @@ a {
 .btnTxt:hover {
   color: white;
   text-decoration: none;
+}
+
+.container {
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
+  padding: 100px;
+}
+
+.form-control {
+  box-sizing: content-box;
+}
+
+.landmark{
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }

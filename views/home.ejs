@@ -4,26 +4,29 @@
    <!-- GRID -->
    <div class="container">
       <div class="row">
+        <h3>One-way ticket :</h3>
           <div class="col-12 offset-lg-6 col-lg-6">
-            <!--New City section-->
-            <form action="/search" method="POST">
+            <!--trip section-->
+            <form action="/searchTrip" method="POST">
               <div class="input-group mb-3">
-                <input name="from" type="text" class="form-control" placeholder="From" aria-label="new city name" required>
-                <input name="to" type="text" class="form-control" placeholder="To" aria-label="new city name" required>
+                <input name="from" type="text" class="form-control" placeholder="From: Paris, Marseille..." aria-label="new city name" required>
+                <input name="to" type="text" class="form-control" placeholder="To Lille, Nantes..." aria-label="new city name" required>
                 <input name="on" type="date" class="form-control" placeholder="To" aria-label="new city name" required>
                 <div class="input-group-append">
-                  <button class="btn btn-warning" type="submit" id="button-addon2">Go</button>
+                  <button class="btn btn-danger" type="submit" id="button-addon2">Go</button>
                 </div>
               </div>
             </form>
           </div>
           <div class="col-12 col-lg-6">
-            <!--Map section-->
-            <div id="mapid"></div>
           </div>
 
       </div>
-   </div>
-   
+
+    <!--l'image du landmark-->
+    </div>
+    <div class="landmark">
+    <img src="./images/landmark.png">
+    </div>
 
    <%- include('footer') %>
