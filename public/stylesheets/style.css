@@ -33,6 +33,7 @@ body {
 .mainTitle {
   margin-bottom: 2em;
   color: white;
+  font-size: 6vh;
 }
 
 .login {
@@ -83,8 +84,8 @@ a:hover {
 
   margin: 0 auto;
   width: 80%;
-  padding-top: 4em;
-  padding-bottom: 5em;
+  padding-top: 3em;
+  padding-bottom: 4em;
   padding-left: 2em;
   padding-right: 2em;
 
@@ -135,4 +136,8 @@ ul, span {
 
 .tableTitle{
   border-bottom: 2px black;
+}
+
+h4{
+  color: white;
 }
