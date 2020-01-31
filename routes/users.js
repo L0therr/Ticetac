@@ -9,14 +9,32 @@ var usersModel = require('../models/users');
 var tripsModel = require('../models/trips');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
   if(!req.session.isLogged) {
     res.redirect('/signin');
   } else {
+    var user = req.session.currentUser;
+    var userOrders = [];
+    var toDisplay = [];
+    
+    for(var i=0;i<user.orders.length;i++) {
+      userOrders.push(user.orders[i])
+    }
 
-    console.log(req.session);
+    console.log('***************');
 
-    res.render('dashboard', {orders: req.session.currentOrder, user: req.session.currentUser, isLogged: req.session.isLogged});
+    for(var i=0;i<userOrders.length;i++) {
+      var one = [];
+      for(var j=0;j<userOrders[i].order.length;j++) {
+        var key = userOrders[i].order[j].fk_trip;
+        var trip = await tripsModel.findOne({
+          _id: key,
+        });
+        one.push(trip);
+      }
+      toDisplay.push(one);
+    }
+    res.render('dashboard', {orders: toDisplay, user: req.session.currentUser, isLogged: req.session.isLogged});
   }
 });
 

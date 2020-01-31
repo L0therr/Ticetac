@@ -108,8 +108,14 @@ router.post('/pay', async function(req, res, next) {
   }
 
   user.orders.push({order: toSave});
-
   await user.save();
+  req.session.currentOrder = [];
+
+  user = await usersModel.findOne({
+    _id: req.session.currentUser._id,
+  });
+  
+  req.session.currentUser = user;
 
   res.redirect('/home');
 });
