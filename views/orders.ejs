@@ -1,63 +1,66 @@
-<%- include('header') %>
+<%- include('header') %> 
 
 
    <!-- GRID -->
+
    <div class="container">
-      <div class="row forTables">
-        <div class="mainTitle">My tickets</div>
-          <div class="col-12 offset-lg-6 col-lg-6">
-            <!--liste des billets réservés section-->
-            <div class="card-body">
-                <div class="table-responsive">
-                  <table id="order-info" class="table">
+    <div class="row forTables">
+      <div class="mainTitle">My order :</div>
+        <div class="col-12 offset-lg-12 col-lg-12">
+          
+          <!-- Liste des réservations passées-->
+          <div class="card-body">
+            <div class="table-responsive tableauArrondi">
+              
+                <table id="order-info" class="table">
+                  <thead>
                     <thead>
-                      <thead>
-                        <tr>
-                          <th>N°</th>
-                          <th>Journey</th>
-                          <th>Date</th>
-                          <th>Departure time</th>
-                          <th>Price</th>  
-                        </tr>
-                      </thead>
+                      <tr class="table-danger">
+                        <th>N°</th>
+                        <th>Journey</th>
+                        <th>Date</th>
+                        <th>Departure time</th>
+                        <th>Price</th>  
+                      </tr>
                     </thead>
-                    
-                    <tbody>
+                  </thead>
 
+                  <tbody>
+                    <% var total = 0;
+                    for(var i=0;i<orders.length;i++) { %>
+                    <tr class="table-light">
+                      <form method="POST" action="/pay">
+                      <input name="id" type="hidden" value="<%= orders[i]._id %>">
+                      <th><%= i + 1%></th>
+                      <th><%= orders[i].departure%> <i class="fas fa-long-arrow-alt-right"></i><%= orders[i]. arrival%></th>
+                      <th><%= orders[i].date%></th>
+                      <th><%= orders[i].departureTime%></th>
+                      <th><%= orders[i].price%>€</th>
+                    </tr>
+                    <% total += orders[i].price %>
+                    <%}%>
 
-                      <% var total = 0;
-                      for(var i=0;i<orders.length;i++) { %>
+                    <tr class="table-success">
+                      <th colspan="4">Total:</th>
+                      <th><%= total %>€</th>
+                    </tr>
 
-                      <tr>
-                        <form method="POST" action="/pay">
-                        <input name="id" type="hidden" value="<%= orders[i]._id %>">
-                        <th><%= i + 1%></th>
-                        <th><%= orders[i].departure%> <i class="fas fa-long-arrow-alt-right"></i><%= orders[i]. arrival%></th>
-                        <th><%= orders[i].date%></th>
-                        <th><%= orders[i].departureTime%></th>
-                        <th><%= orders[i].price%>€</th>
-                      </tr>
-                      <% total += orders[i].price %>
-                      <%}%>
+                    <tr>
+                      <th><div class="btnnn"></div><button class="btn btn-danger" type="submit">Commander</button></div></th>
+                    </tr>
+                  </form>
 
-                      <tr>
-                        <th colspan="4">Total:</th>
-                        <th><%= total %>€</th>
-                      </tr>
-
-                      <tr>
-                        <th colspan="5"><button type="submit">Commander</button></th>
-                      </form>
-                      </tr>
-
-
-                    </tbody>
-                  </table>
-                  <div class="btnnn"><button class="btn btn-danger" type="submit">Home</button></div>
+                  </tbody>
+                </table>
+              
+            </div>
           </div>
-        </div>
+    </div>
+ </div>
 
-      </div>
-   </div>
+
+
+
+
    
-   <%- include('footer') %>
+<%- include('footer') %>
