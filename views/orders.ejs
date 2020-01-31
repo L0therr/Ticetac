@@ -12,7 +12,7 @@
             <!--liste des billets réservés section-->
             <div class="card-body">
                 <div class="table-responsive">
-                  <table id="order-info" class="table table-bordered" width="100%" cellspacing="0">
+                  <table id="order-info" class="table" width="100%" cellspacing="0">
                     <thead>
                       <thead>
                         <tr>
@@ -20,41 +20,30 @@
                           <th>Journey</th>
                           <th>Date</th>
                           <th>Departure time</th>
-                          <th>Price</th>
-
-  
+                          <th>Price</th>  
                         </tr>
                       </thead>
                     </thead>
                     
                     <tbody>
 
-                      <% var total = 0;
-                        for(var i=0;i<orders.length;i++){ %>
+
+                      <% console.log(orders);
+                      for(var i=0;i<orders.length;i++) { %>
+
                       <tr>
-                        <td><%= i + 1 %></td>
-                        <td><%= orders[i].departure %> <i class="fas fa-long-arrow-alt-right"></i> <%= orders[i].arrival %></td>
-                        <td><%= orders[i].date %></td>
-                        <td><%= orders[i].departureTime %></td>
-                        <td><%= orders[i].price %>€</td>  
+                        <th><%= i+ 1%></th>
+                        <th><%= orders[i].departure%></th>
+                        <th>Date</th>
+                        <th>Departure time</th>
+                        <th>Price</th>  
                       </tr>
 
-                      <%total =+ orders[i].price %> <%} %>
-                      
-                      <tr>
-                        <td colspan="4">Total:</td>
-                        <td><%= total %>€</td>
-                      </tr>
-
-
+                      <%}%>
 
 
                     </tbody>
                   </table>
-
-
-
-
           </div>
         </div>
 

@@ -6,7 +6,7 @@ var options = {
     useUnifiedTopology: true
    };
 
-mongoose.connect("mongodb+srv://admin:@lphabetaTango9@cluster0-k0fxq.gcp.mongodb.net/test?retryWrites=true&w=majority", options, error =>{
+mongoose.connect("mongodb+srv://admin:guvO7G5z6ZLB3Mgz@cluster0-k0fxq.gcp.mongodb.net/test?retryWrites=true&w=majority", options, error =>{
     if (error) {
    console.log("ATTENTION ERREUR:", error);
   } else {

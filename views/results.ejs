@@ -18,7 +18,7 @@
                 <span><%= search[i].arrival %></span>
                 <span>Train departure at: <%= search[i].departureTime %></span>
                 <span><%= search[i].price %>€</span>
-                <button class="btn btn-danger"><a class="btnTxt" href="/orders?id=<%= search[i]._id%>">Go</a></button>
+                <a class="btnTxt" href="/orders?id=<%= search[i]._id%>"><button class="btn btn-danger">Go</button></a>
               </li>
               <%}%>
 

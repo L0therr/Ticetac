@@ -61,7 +61,6 @@ router.post('/search', async function(req, res, next) {
 
   //redirect
   if(searchTrip.length > 0) {
-    console.log(searchTrip)
     res.render('results', {search: searchTrip});
   } else {
     req.session.errorSearch = {
@@ -75,24 +74,24 @@ router.post('/search', async function(req, res, next) {
 
 //ORDERS
 router.get('/orders', async function(req, res, next) {
+  if (req.session.currentOrder == undefined) {
+    req.session.currentOrder = [];
+  }
+
   var tripId = req.query.id;
 
   var trip = await tripsModel.findOne({
     _id: tripId,
   });
-  
-  req.session.currentOrder = [];
-  req.session.currentOrder.push(trip)
 
-  res.render('orders', {orders: req.session.currentOrder});
+  req.session.currentOrder.push(trip);
+  
+  res.redirect('/checkout');
 });
 
 
-
-
-
-
-
-
+router.get('/checkout', async function(req, res, next) {
+  res.render('orders', {orders: req.session.currentOrder});
+});
 
 module.exports = router;
