@@ -54,10 +54,12 @@
 
             <%}else {%>
 
-            <div class="mainTitle">You have no orders yet...</div>
+            <div class="mainTitle">You have no orders yet <%= user.lastName %> <%= user.firstName %>...</div>
 
-            
-
+              <div class="smileyDiv">
+                <div class="smile">
+                <%- include('smiley') %></div>
+              </div>
 
             <div class="btnnn"><a href="/home"><button class="btn btn-danger" type="submit">Home</button></a></div> 
             <%}%>

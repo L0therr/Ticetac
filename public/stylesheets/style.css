@@ -31,7 +31,7 @@ body {
 }
 
 .mainTitle {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   color: white;
   font-size: 6vh;
 }
@@ -171,3 +171,21 @@ h4{
   }
 }
 
+
+.smileyDiv {
+ margin-bottom: 6em;
+}
+
+.smile {
+  position: relative;
+  animation: moveSmile 1s ease-in-out infinite alternate
+}
+
+@keyframes moveSmile {
+  0% {
+    top: 20px;
+  }
+  100% {
+    top: -20px;
+  }
+}
